@@ -30,6 +30,4 @@ public class ShapeCollector {
         Shape[] shapes = new Shape[collection.size()];
         return collection.toArray(shapes);
     }
-
-
 }

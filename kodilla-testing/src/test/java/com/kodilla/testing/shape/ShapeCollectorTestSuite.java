@@ -49,7 +49,6 @@ public class ShapeCollectorTestSuite {
         assertEquals(expected, result);
         assertEquals(1, size);
         System.out.println("New shape added to the list");
-
     }
 
     @Test
@@ -109,7 +108,5 @@ public class ShapeCollectorTestSuite {
 
         //Then
         assertArrayEquals(array, shapeCollector.showFigures());
-
     }
-
 }

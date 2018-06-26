@@ -18,6 +18,11 @@ public class Triangle implements Shape{
     }
 
     @Override
+    public String getShapeName() {
+        return "triangle";
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Triangle)) return false;
@@ -30,11 +35,5 @@ public class Triangle implements Shape{
     public int hashCode() {
 
         return Objects.hash(base, height);
-    }
-
-    @Override
-    public String getShapeName() {
-        return "triangle";
-
     }
 }
