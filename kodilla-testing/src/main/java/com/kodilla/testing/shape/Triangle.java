@@ -7,11 +7,13 @@ public class Triangle implements Shape {
     double height;
 
     public Triangle( double base, double height) {
+
         this.base = base;
         this.height = height;
     }
 
     @Override
+
     public String getShapeName() {
         return "triangle";
     }
@@ -21,18 +23,4 @@ public class Triangle implements Shape {
         return 0.5 * base * height;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Triangle)) return false;
-        Triangle triangle = (Triangle) o;
-        return Double.compare(triangle.base, base) == 0 &&
-                Double.compare(triangle.height, height) == 0;
-    }
-
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(base, height);
-    }
 }

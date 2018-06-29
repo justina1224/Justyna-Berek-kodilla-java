@@ -3,7 +3,6 @@ package com.kodilla.testing.collection;
 import java.util.ArrayList;
 
 public class OddNumberExterminator {
-
     public OddNumberExterminator() {
     }
 
@@ -16,5 +15,4 @@ public class OddNumberExterminator {
             }
         return evenNumbers;
     }
-
 }
