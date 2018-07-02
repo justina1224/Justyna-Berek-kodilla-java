@@ -2,6 +2,7 @@ package com.kodilla.stream;
 
 import com.kodilla.stream.beautifier.CapitalizingWords;
 import com.kodilla.stream.beautifier.PoemBeautifier;
+import com.kodilla.stream.iterate.NumbersGenerator;
 import com.kodilla.stream.lambda.ExecuteSaySomething;
 import com.kodilla.stream.lambda.ExpressionExecutor;
 import com.kodilla.stream.lambda.Processor;
@@ -28,6 +29,9 @@ public class StreamMain {
         poemBeautifier.beautify("I can accept failure, everyone fails at something. But I can’t accept not trying", (stringToBeautify) -> "***" + stringToBeautify + "***");
         poemBeautifier.beautify("Doing what you like is freedom. Liking what you do is happiness", (stringToBeautify -> stringToBeautify.replace("o","O")));
         poemBeautifier.beautify("Appearances are deceptive", CapitalizingWords::capEachWord);
+
+        System.out.println("Using Stream to generate even numbers from 1 to 20");
+        NumbersGenerator.generateEven(20);
 
     }
 }
