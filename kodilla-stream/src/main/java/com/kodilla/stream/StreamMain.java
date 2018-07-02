@@ -1,37 +1,25 @@
 package com.kodilla.stream;
 
-import com.kodilla.stream.beautifier.CapitalizingWords;
-import com.kodilla.stream.beautifier.PoemBeautifier;
-import com.kodilla.stream.iterate.NumbersGenerator;
-import com.kodilla.stream.lambda.ExecuteSaySomething;
-import com.kodilla.stream.lambda.ExpressionExecutor;
-import com.kodilla.stream.lambda.Processor;
-import com.kodilla.stream.lambda.SaySomething;
-import com.kodilla.stream.reference.FunctionalCalculator;
+import com.kodilla.stream.forumUser.Forum;
+import com.kodilla.stream.forumUser.ForumUser;
+
+import java.time.LocalDate;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class StreamMain {
     public static void main(String[] args) {
-        ExpressionExecutor expressionExecutor = new ExpressionExecutor();
+        Forum forum = new Forum();
+        LocalDate today = LocalDate.now();
+        Map<Integer, ForumUser> theMapOfForumUsers = forum.getUserList().stream()
+                .filter(user -> user.getNumberOfPosts() > 1)
+                .filter(user -> user.getSex() == 'M')
+                .filter(user -> user.getDateOfBirth().plusYears(20).compareTo(today) <= 0)
+                .collect(Collectors.toMap(ForumUser::getUserId, forumUser -> forumUser));
 
-        expressionExecutor.executeExpression(10, 5, (a, b) -> a + b);
-        expressionExecutor.executeExpression(10, 5, (a, b) -> a - b);
-        expressionExecutor.executeExpression(10, 5, (a, b) -> a * b);
-        expressionExecutor.executeExpression(10, 5, (a, b) -> a / b);
-
-        System.out.println("Calculating expressions with method references");
-        expressionExecutor.executeExpression(3, 4, FunctionalCalculator::multiplyAByB);
-        expressionExecutor.executeExpression(3, 4, FunctionalCalculator::addAToB);
-        expressionExecutor.executeExpression(3, 4, FunctionalCalculator::subBFromA);
-        expressionExecutor.executeExpression(3, 4, FunctionalCalculator::divideAByB);
-
-        PoemBeautifier poemBeautifier = new PoemBeautifier();
-        poemBeautifier.beautify("There is only one way to avoid criticism: do nothing, say nothing, and be nothing", (stringToBeautify) -> stringToBeautify.toUpperCase());
-        poemBeautifier.beautify("I can accept failure, everyone fails at something. But I can’t accept not trying", (stringToBeautify) -> "***" + stringToBeautify + "***");
-        poemBeautifier.beautify("Doing what you like is freedom. Liking what you do is happiness", (stringToBeautify -> stringToBeautify.replace("o","O")));
-        poemBeautifier.beautify("Appearances are deceptive", CapitalizingWords::capEachWord);
-
-        System.out.println("Using Stream to generate even numbers from 1 to 20");
-        NumbersGenerator.generateEven(20);
-
+        System.out.println("The number of users fulfilling criteria : " + theMapOfForumUsers.size() + "\n");
+        theMapOfForumUsers.entrySet().stream()
+                .map(entry -> "User ID: " + entry.getKey() + ", Details: " + entry.getValue())
+                .forEach(System.out::println);
     }
 }
