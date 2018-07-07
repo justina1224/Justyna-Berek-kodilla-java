@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.kodilla.testing.collection.CollectionTestSuite" tests="2" skipped="0" failures="0" errors="0" timestamp="2018-07-04T06:47:18" hostname="DESKTOP-OLGP3DC" time="0.006">
+  <properties/>
+  <testcase name="testOddNumbersExterminatorEmptyList" classname="com.kodilla.testing.collection.CollectionTestSuite" time="0.005"/>
+  <testcase name="testOddNumbersExterminatorNormalList" classname="com.kodilla.testing.collection.CollectionTestSuite" time="0.0"/>
+  <system-out><![CDATA[Test Suite Begin
+Test begin
+Testing empty list, contents: []
+Testing empty list exterminating:  []
+Test end
+Test begin
+Testing normal list, contents: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+Testing normal list exterminating: [2, 4, 6, 8, 10]
+Test end
+Test Suite End
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

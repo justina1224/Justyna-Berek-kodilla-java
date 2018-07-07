@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.kodilla.testing.forum.statistics.StatisticTestSuite" tests="8" skipped="0" failures="0" errors="0" timestamp="2018-07-04T06:47:19" hostname="DESKTOP-OLGP3DC" time="0.551">
+  <properties/>
+  <testcase name="calculateStatisticsWithMockHundredUsersHundredPostsThousandComments" classname="com.kodilla.testing.forum.statistics.StatisticTestSuite" time="0.532"/>
+  <testcase name="calculateStatisticsWithMockZeroUsersTwentyPostsTenComments" classname="com.kodilla.testing.forum.statistics.StatisticTestSuite" time="0.015"/>
+  <testcase name="calculateStatisticsWithMockHundredUsersThousandPostsHundredComments" classname="com.kodilla.testing.forum.statistics.StatisticTestSuite" time="0.001"/>
+  <testcase name="calculateStatisticsWithMockZeroUsersZeroPostsZeroComments" classname="com.kodilla.testing.forum.statistics.StatisticTestSuite" time="0.0"/>
+  <testcase name="calculateStatisticsWithMockZeroUsersTenPostsTwentyComments" classname="com.kodilla.testing.forum.statistics.StatisticTestSuite" time="0.0"/>
+  <testcase name="calculateStatisticsWithMockZeroUsersThousandPostsZeroComments" classname="com.kodilla.testing.forum.statistics.StatisticTestSuite" time="0.0"/>
+  <testcase name="calculateStatisticsWithMockHundredUsersZeroPostsTenComments" classname="com.kodilla.testing.forum.statistics.StatisticTestSuite" time="0.0"/>
+  <testcase name="calculateStatisticsWithMockHundredUsersThousandPostsZeroComments" classname="com.kodilla.testing.forum.statistics.StatisticTestSuite" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

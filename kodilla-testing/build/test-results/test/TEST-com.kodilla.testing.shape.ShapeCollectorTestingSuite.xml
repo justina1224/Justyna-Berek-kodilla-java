@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.kodilla.testing.shape.ShapeCollectorTestingSuite" tests="4" skipped="0" failures="0" errors="0" timestamp="2018-07-04T06:47:19" hostname="DESKTOP-OLGP3DC" time="0.005">
+  <properties/>
+  <testcase name="testShowFigures" classname="com.kodilla.testing.shape.ShapeCollectorTestingSuite" time="0.002"/>
+  <testcase name="testRemoveFigure" classname="com.kodilla.testing.shape.ShapeCollectorTestingSuite" time="0.0"/>
+  <testcase name="testAddFigure" classname="com.kodilla.testing.shape.ShapeCollectorTestingSuite" time="0.0"/>
+  <testcase name="testGetFigure" classname="com.kodilla.testing.shape.ShapeCollectorTestingSuite" time="0.0"/>
+  <system-out><![CDATA[Starting the suite of tests
+Test number 1
+Test passed
+Test number 2
+One shape removed from the list
+Test passed
+Test number 3
+New shape added to the list
+Test passed
+Test number 4
+Getting an element from the list is going right
+Test passed
+All test are finished
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
