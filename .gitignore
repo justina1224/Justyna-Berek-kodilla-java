@@ -17,6 +17,7 @@
 *.iml
 *.ipr
 */out/
+*/build/
 
 ### NetBeans ###
 /nbproject/private/
@@ -27,6 +28,4 @@
 /kodilla-exception/out/
 /kodilla-stream/out/
 /kodilla-testing/out/
-/kodilla-exception/build/
-/kodilla-stream/build/
-/kodilla-testing/build/
+
