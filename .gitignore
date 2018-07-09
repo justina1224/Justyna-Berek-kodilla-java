@@ -20,8 +20,13 @@
 
 ### NetBeans ###
 /nbproject/private/
-/build/
 /nbbuild/
 /dist/
 /nbdist/
 /.nb-gradle/
+/kodilla-exception/out/
+/kodilla-stream/out/
+/kodilla-testing/out/
+/kodilla-exception/build/
+/kodilla-stream/build/
+/kodilla-testing/build/
