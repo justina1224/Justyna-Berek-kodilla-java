@@ -32,3 +32,9 @@
 /kodilla-good-patterns/build.gradle
 /kodilla-spring-intro/build/
 /kodilla-spring-intro/build.gradle
+/kodilla-spring-intro/out/
+/kodilla-testing/build/
+/kodilla-stream/build/
+/kodilla-good-patterns/build/
+/kodilla-good-patterns/out/
+/.gradle/
