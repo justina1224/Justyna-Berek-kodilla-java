@@ -1,6 +1,7 @@
-package com.kodilla.hibernate.tasklist.dao;
+package com.kodilla.hibernate1.tasklistdao;
 
-import com.kodilla.hibernate.tasklist.TaskList;
+import com.kodilla.hibernate1.tasklist.TaskList;
+import com.kodilla.hibernate1.tasklist.dao.TaskListDao;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -35,5 +36,4 @@ public class TaskListDaoTestSuite {
         int id = readTaskLists.get(0).getId();
         taskListDao.delete(id);
     }
-
 }

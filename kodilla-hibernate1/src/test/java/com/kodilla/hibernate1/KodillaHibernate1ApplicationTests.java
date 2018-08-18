@@ -1,4 +1,4 @@
-package com.kodilla.hibernate;
+package com.kodilla.hibernate1;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,8 +7,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class KodillaHibernateApplicationTests {
+public class KodillaHibernate1ApplicationTests {
+
     @Test
     public void contextLoads() {
     }
+
 }

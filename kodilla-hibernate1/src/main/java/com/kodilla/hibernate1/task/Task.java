@@ -1,4 +1,4 @@
-package com.kodilla.hibernate.task;
+package com.kodilla.hibernate1.task;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -60,4 +60,5 @@ public final class Task {
     private void setDuration(int duration) {
         this.duration = duration;
     }
+
 }

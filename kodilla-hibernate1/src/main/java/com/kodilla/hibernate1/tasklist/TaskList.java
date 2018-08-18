@@ -1,4 +1,5 @@
-package com.kodilla.hibernate.tasklist;
+package com.kodilla.hibernate1.tasklist;
+
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
