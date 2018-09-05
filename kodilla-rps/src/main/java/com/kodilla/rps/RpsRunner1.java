@@ -31,7 +31,7 @@ public class RpsRunner1 {
                 wrongInput = true;
                 sc.nextLine();
             }
-        } while (wrongInput == true);
+        } while (wrongInput);
         System.out.println(name + ", please press one of the following:");
         rps.showInstruction();
         rps.play();

@@ -8,24 +8,31 @@ import static com.kodilla.rps.RpsRunner1.numberOfRounds;
 public class RockPaperScissors1 {
     private Scanner scanner;
     private Random random;
-    static boolean END = false;
-    static int roundCounter = 1;
-    static int userWinsCounter = 0;
-    static int computerWinsCounter = 0;
+    private ResultEnum resultEnum;
+    private boolean end = false;
+    private int roundCounter;
+    private int userWinsCounter;
+    private int computerWinsCounter;
 
     public RockPaperScissors1() {
         this.scanner = new Scanner(System.in);
         this.random = new Random();
+        this.resultEnum = resultEnum;
+        this.userWinsCounter = 0;
+        this.computerWinsCounter = 0;
+        this.roundCounter = 1;
     }
 
     public void startTheGame() {
-        System.out.println("Hello, welcome to \"Rock Paper Scissors\" game, what's your name?");
+        System.out.println("Hello, welcome to \"Rock Paper Scissors Lizard Spock\" game, what's your name?");
     }
 
     public void showInstruction() {
         System.out.println("1 - if you want to choose \"rock\",\n" +
                 "2 - if you want to choose \"paper\",\n" +
                 "3 - if you want to choose \"scissors\",\n" +
+                "4 - if you want to choose \"lizard\",\n" +
+                "5 - if you want to choose \"Spock\",\n" +
                 "x - if you want to quit \n" +
                 "n - if you want to start over");
     }
@@ -48,6 +55,16 @@ public class RockPaperScissors1 {
             } else if (move == '3') {
                 System.out.println("You've chosen scissors");
                 String userMove = "scissors";
+                wrongMove = false;
+                return userMove;
+            } else if (move == '4') {
+                System.out.println("You've chosen lizard");
+                String userMove = "lizard";
+                wrongMove = false;
+                return userMove;
+            } else if (move == '5') {
+                System.out.println("You've chosen Spock");
+                String userMove = "spock";
                 wrongMove = false;
                 return userMove;
             } else if (move == 'x') {
@@ -99,7 +116,7 @@ public class RockPaperScissors1 {
                 }
             } else {
                 wrongMove = false;
-                System.out.println("You can only choose (1)rock, (2)paper, (3)scissors, (n)start over or (x)exit");
+                System.out.println("You can only choose (1)rock, (2)paper, (3)scissors, (4)lizard, (5)Spock, (n)start over or (x)exit");
                 move = scanner.next().charAt(0);
             }
         }
@@ -107,67 +124,144 @@ public class RockPaperScissors1 {
     }
 
     public String computerMove() {
-        int move = random.nextInt(2);
+        int move = random.nextInt(4);
         if (move == 0) {
             String computerMove = "rock";
             System.out.println("Computer's move: rock");
             return computerMove;
-        }
-        if (move == 1) {
+        } else if (move == 1) {
             String computerMove = "paper";
             System.out.println("Computer's move: paper");
             return computerMove;
-        }
-        if (move == 2) {
+        } else if (move == 2) {
             String computerMove = "scissors";
             System.out.println("Computer's move: scissors");
+            return computerMove;
+        } else if (move == 3) {
+            String computerMove = "lizard";
+            System.out.println("Computer's move: lizard");
+            return computerMove;
+        } else if (move == 4) {
+            String computerMove = "spock";
+            System.out.println("Computer's move: Spock");
             return computerMove;
         } else {
             return null;
         }
     }
 
-    public String defineWinner(String user, String computer) {
+    public ResultEnum defineWinner(String user, String computer) {
+
         if (user == computer) {
             System.out.println("This is a tie");
-            return "tie";
-
-        } else if (user == "paper" && computer == "rock") {
-            userWinsCounter++;
-            System.out.println("Congratulations! You won this round!");
-            return "win";
-
-        } else if (user == "paper" && computer == "scissors") {
-            computerWinsCounter++;
-            System.out.println("Sorry you lost this round :(");
-            return "lose";
+            return resultEnum.TIE;
 
         } else if (user == "scissors" && computer == "paper") {
             userWinsCounter++;
             System.out.println("Congratulations! You won this round!");
-            return "win";
-
-        } else if (user == "rock" && computer == "paper") {
-            computerWinsCounter++;
-            System.out.println("Sorry you lost this round :(");
-            return "lose";
-
-        } else if (user == "rock" && computer == "scissors") {
-            userWinsCounter++;
-            System.out.println("Congratulations! You won this round!");
-            return "win";
+            return resultEnum.WIN;
 
         } else if (user == "scissors" && computer == "rock") {
             computerWinsCounter++;
             System.out.println("Sorry you lost this round :(");
-            return "lose";
+            return resultEnum.LOSE;
+
+        } else if (user == "scissors" && computer == "lizard") {
+            userWinsCounter++;
+            System.out.println("Congratulations! You won this round!");
+            return resultEnum.WIN;
+
+        } else if (user == "scissors" && computer == "spock") {
+            computerWinsCounter++;
+            System.out.println("Sorry you lost this round :(");
+            return resultEnum.LOSE;
+
+        } else if (user == "paper" && computer == "rock") {
+            userWinsCounter++;
+            System.out.println("Congratulations! You won this round!");
+            return resultEnum.WIN;
+
+        } else if (user == "paper" && computer == "scissors") {
+            computerWinsCounter++;
+            System.out.println("Sorry you lost this round :(");
+            return resultEnum.LOSE;
+
+        } else if (user == "paper" && computer == "spock") {
+            userWinsCounter++;
+            System.out.println("Congratulations! You won this round!");
+            return resultEnum.WIN;
+
+        } else if (user == "paper" && computer == "lizard") {
+            userWinsCounter++;
+            System.out.println("Congratulations! You won this round!");
+            return resultEnum.WIN;
+
+        } else if (user == "rock" && computer == "scissors") {
+            userWinsCounter++;
+            System.out.println("Congratulations! You won this round!");
+            return resultEnum.WIN;
+
+        } else if (user == "rock" && computer == "paper") {
+            computerWinsCounter++;
+            System.out.println("Sorry you lost this round :(");
+            return resultEnum.LOSE;
+
+        } else if (user == "rock" && computer == "lizard") {
+            userWinsCounter++;
+            System.out.println("Congratulations! You won this round!");
+            return resultEnum.WIN;
+
+        } else if (user == "rock" && computer == "spock") {
+            userWinsCounter++;
+            System.out.println("Congratulations! You won this round!");
+            return resultEnum.WIN;
+
+        } else if (user == "lizard" && computer == "spock") {
+            userWinsCounter++;
+            System.out.println("Congratulations! You won this round!");
+            return resultEnum.WIN;
+
+        } else if (user == "lizard" && computer == "rock") {
+            computerWinsCounter++;
+            System.out.println("Sorry you lost this round :(");
+            return resultEnum.LOSE;
+
+        } else if (user == "lizard" && computer == "paper") {
+            userWinsCounter++;
+            System.out.println("Congratulations! You won this round!");
+            return resultEnum.WIN;
+
+        } else if (user == "lizard" && computer == "scissors") {
+            computerWinsCounter++;
+            System.out.println("Sorry you lost this round :(");
+            return resultEnum.LOSE;
+
+        } else if (user == "spock" && computer == "rock") {
+            userWinsCounter++;
+            System.out.println("Congratulations! You won this round!");
+            return resultEnum.WIN;
+
+        } else if (user == "spock" && computer == "paper") {
+            computerWinsCounter++;
+            System.out.println("Sorry you lost this round :(");
+            return resultEnum.LOSE;
+
+        } else if (user == "spock" && computer == "scissors") {
+            userWinsCounter++;
+            System.out.println("Congratulations! You won this round!");
+            return resultEnum.WIN;
+
+        } else if (user == "spock" && computer == "lizard") {
+            computerWinsCounter++;
+            System.out.println("Sorry you lost this round :(");
+            return resultEnum.LOSE;
         }
-        return "";
+        return null;
     }
 
     public String finishTheGame() {
         System.out.println(this.showTheWinner(computerWinsCounter, userWinsCounter));
-        if(userWinsCounter == computerWinsCounter) {
+        if(userWinsCounter < computerWinsCounter) {
             System.out.println("Would you like to make a rematch? Click (n)yes or (x)exit");
         } else {
             System.out.println("End of the game, if you want to play one more time press 'n', to exit press 'x'");
@@ -176,7 +270,7 @@ public class RockPaperScissors1 {
         while (!answer) {
             char decision = scanner.next().charAt(0);
             if (decision == 'x') {
-                END = true;
+                end = true;
                 answer = true;
                 return "exit";
             } else if (decision == 'n') {
@@ -217,18 +311,18 @@ public class RockPaperScissors1 {
     }
 
     public void play() {
-        while (END == false) {
-            while (roundCounter <= numberOfRounds && END == false) {
+        while (!end) {
+            while (roundCounter <= numberOfRounds && !end) {
                 System.out.println("\nRound number " + roundCounter);
-                System.out.println("Make your move: please choose (1)rock, (2)paper, (3)scissors, (n)start over or (x)exit");
+                System.out.println("Make your move: please choose (1)rock, (2)paper, (3)scissors, (4)lizard, (5)Spock, (n)start over or (x)exit");
                 String user = this.userMove();
-                if (user == "paper" || user == "rock" || user == "scissors") {
+                if (user == "lizard" || user == "spock" || user == "paper" || user == "rock" || user == "scissors") {
                     String computer = this.computerMove();
                     roundCounter++;
                     this.defineWinner(user, computer);
                 } else if (user == "exit") {
                 } else if (user == "yes exit") {
-                    END = true;
+                    end = true;
                 } else if (user == "start over") {
                     roundCounter = 1;
                     userWinsCounter = 0;
