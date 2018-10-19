@@ -1,5 +1,7 @@
 package com.kodilla.hibernate1.manytomany;
 
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
@@ -9,7 +11,12 @@ import java.util.List;
         name = "Employee.retrieveEmployeeWithName",
         query = "FROM Employee WHERE firstname = :FIRSTNAME"
 )
-
+@NamedNativeQuery(
+        name = "Employee.retrieveEmployeeWithNameContaining",
+        query = "SELECT * FROM EMPLOYEES WHERE LASTNAME LIKE :LETTERS",
+        resultClass = Employee.class
+)
+@Component
 @Entity
 @Table(name = "EMPLOYEES")
 public class Employee {

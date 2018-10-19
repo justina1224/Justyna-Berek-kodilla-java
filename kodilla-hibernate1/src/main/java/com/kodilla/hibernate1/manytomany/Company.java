@@ -1,17 +1,26 @@
 package com.kodilla.hibernate1.manytomany;
 
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-@NamedNativeQuery(
-        name = "Company.retrieveCompaniesWithNameBeginningWith",
-        query = "SELECT * FROM COMPANIES" +
-                " WHERE LEFT(COMPANY_NAME, 3) = :FIRST_THREE_LETTERS",
-        resultClass = Company.class
-)
-
+@NamedNativeQueries({
+        @NamedNativeQuery(
+                name = "Company.retrieveCompaniesWithNameBeginningWith",
+                query = "SELECT * FROM COMPANIES" +
+                        " WHERE LEFT(COMPANY_NAME, 3) = :FIRST_THREE_LETTERS",
+                resultClass = Company.class
+        ),
+        @NamedNativeQuery(
+                name = "Company.retrieveCompanyWithNameContaining",
+                query = "SELECT * FROM COMPANIES WHERE COMPANY_NAME LIKE :LETTERS",
+                resultClass = Company.class
+        )
+})
+@Component
 @Entity
 @Table(name = "COMPANIES")
 public class Company {
