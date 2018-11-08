@@ -11,6 +11,8 @@ public class Board {
         }
     }
 
+
+
     public Figure getFigure(int x, int y) {
         return board[x][y];
     }
