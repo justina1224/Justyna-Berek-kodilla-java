@@ -2,8 +2,7 @@ package com.kodilla.sudoku;
 
 import com.kodilla.sudoku.elements.SudokuBoard;
 
-import static com.kodilla.sudoku.SudokuSolver.BOX_SIZE;
-import static com.kodilla.sudoku.SudokuSolver.SIZE;
+import static com.kodilla.sudoku.SudokuSolver.*;
 
 public class MoveValidator {
 
@@ -11,15 +10,15 @@ public class MoveValidator {
     }
 
     public boolean checkRow(SudokuBoard board, int row, int number) {
-        for (int i = 0; i < SIZE; i++)
-            if (board.getSudokuBoard().get(row).getRowElements().get(i).getValue() == number)
+        for (int i = MIN_INDEX; i <= MAX_INDEX; i++)
+            if (board.getElementValue(row, i) == number)
                 return true;
         return false;
     }
 
     public boolean checkColumn(SudokuBoard board, int column, int number) {
-        for (int i = 0; i < SIZE; i++)
-            if (board.getSudokuBoard().get(i).getRowElements().get(column).getValue() == number)
+        for (int i = MIN_INDEX; i <= MAX_INDEX; i++)
+            if (board.getElementValue(i, column) == number)
                 return true;
         return false;
     }
@@ -27,18 +26,18 @@ public class MoveValidator {
     public boolean checkBox(SudokuBoard board, int row, int column, int number) {
         int baseRow = row - row % BOX_SIZE;
         int baseCol = column - column % BOX_SIZE;
-        for (int i = baseRow; i < baseRow + 3; i++)
-            for (int j = baseCol; j < baseCol + 3; j++)
-                if (board.getSudokuBoard().get(i).getRowElements().get(j).getValue() == number)
+        for (int i = baseRow; i < baseRow + BOX_SIZE; i++)
+            for (int j = baseCol; j < baseCol + BOX_SIZE; j++)
+                if (board.getElementValue(i, j) == number)
                     return true;
         return false;
     }
 
     public boolean validateMove(SudokuBoard board, int row, int column, int number) {
         if (!checkRow(board, row, number) && !checkColumn(board, column, number) && !checkBox(board, row, column, number)
-                && number >= 1 && number <= 9
-                && row >= 0 && row <= 8
-                && column >= 0 && column <= 8) {
+                && number >= MIN_VALUE && number <= MAX_VALUE
+                && row >= MIN_INDEX && row <= MAX_INDEX
+                && column >= MIN_INDEX && column <= MAX_INDEX) {
             return true;
         }
         return false;

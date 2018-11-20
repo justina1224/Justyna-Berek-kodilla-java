@@ -24,59 +24,14 @@ public class SudokuGameController {
 
     public void controlLoop() {
         String chosenOption = "";
-        String numberInput = "";
         while (!chosenOption.equals(EXIT)) {
             chosenOption = scanner.nextLine();
             switch (chosenOption) {
                 case ADD_NUMBER:
-                    System.out.println("Please choose a number[1-9] and a position on the board {number, x, y} where x = row[0-8] and y = column[0-8]");
-                    numberInput = scanner.nextLine();
-                    if (numberInput.length() != 5) {
-                        System.out.println("Incorrect format of input!" + "\n" +
-                                "Please type \"ADD\" and choose a number with a position on board in a correct format: {number, x(row), y(column}");
-                        break;
-                    }
-                    int value;
-                    int row;
-                    int column;
-                    try {
-                        value = Integer.parseInt(numberInput.substring(0, 1));
-                        row = Integer.parseInt(numberInput.substring(2, 3));
-                        column = Integer.parseInt(numberInput.substring(4, 5));
-                        if (validator.validateMove(board, row, column, value)) {
-                            board.setElement(row, column, value);
-                        } else {
-                            System.out.println("Number " + value + " can't be placed in here, please type \"ADD\" and choose another number");
-                        }
-                    } catch (NumberFormatException | IndexOutOfBoundsException ex) {
-                        System.out.println("Incorrect format of input!" + "\n" +
-                                "Please type \"ADD\" and choose a number with a position on board in a correct format: {number, x(row), y(column}");
-                    }
-                    System.out.println(board);
+                    addNumber();
                     break;
                 case SOLVE:
-                    System.out.println("Solving sudoku...");
-                    if (solver.solve()) {
-                        System.out.println("Sudoku solved successfully:)");
-                        System.out.println(board);
-                    } else {
-                        System.out.println("Unfortunately this sudoku can't be solved:( \n" +
-                                "If you want to start one more time type \"NEW\" or press \"X\" to exit");
-                        String answer = scanner.nextLine();
-                        switch (answer) {
-                            case NEW:
-                                System.out.println("Let's start one more time :)");
-                                printTheBoard();
-                                controlLoop();
-                                break;
-                            case EXIT:
-                                System.out.println("Thanks for the game! See you soon:)");
-                                break;
-                            default:
-                                System.out.println("There is no such an option.\n" +
-                                        "If you want to start one more time type \"NEW\" or press \"X\" to exit)");
-                        }
-                    }
+                    solve();
                     break;
                 case NEW:
                     System.out.println("Let's start one more time :)");
@@ -92,6 +47,58 @@ public class SudokuGameController {
             }
         }
         scanner.close();
+    }
+
+    public void addNumber() {
+        System.out.println("Please choose a number[1-9] and a position on the board {number, x, y} where x = row[0-8] and y = column[0-8]");
+        String numberInput = scanner.nextLine();
+        if (numberInput.length() != 5) {
+            System.out.println("Incorrect format of input!" + "\n" +
+                    "Please type \"ADD\" and choose a number with a position on board in a correct format: {number, x(row), y(column}");
+        }
+        try {
+            int value = parse(numberInput, 0);
+            int row = parse(numberInput, 2);
+            int column = parse(numberInput, 4);
+            if (validator.validateMove(board, row, column, value)) {
+                board.setElement(row, column, value);
+            } else {
+                System.out.println("Number " + value + " can't be placed in here, please type \"ADD\" and choose another number");
+            }
+        } catch (NumberFormatException | IndexOutOfBoundsException ex) {
+            System.out.println("Incorrect format of input!" + "\n" +
+                    "Please type \"ADD\" and choose a number with a position on board in a correct format: {number, x(row), y(column}");
+        }
+        System.out.println(board);
+    }
+
+    public int parse(String input, int x) {
+        return Integer.parseInt(input.substring(x, x + 1));
+    }
+
+    public void solve() {
+        System.out.println("Solving sudoku...");
+        if (solver.solve()) {
+            System.out.println("Sudoku solved successfully:)");
+            System.out.println(board);
+        } else {
+            System.out.println("Unfortunately this sudoku can't be solved:( \n" +
+                    "If you want to start one more time type \"NEW\" or press \"X\" to exit");
+            String answer = scanner.nextLine();
+            switch (answer) {
+                case NEW:
+                    System.out.println("Let's start one more time :)");
+                    printTheBoard();
+                    controlLoop();
+                    break;
+                case EXIT:
+                    System.out.println("Thanks for the game! See you soon:)");
+                    break;
+                default:
+                    System.out.println("There is no such an option.\n" +
+                            "If you want to start one more time type \"NEW\" or press \"X\" to exit)");
+            }
+        }
     }
 
     public void startTheGame() {
@@ -112,7 +119,7 @@ public class SudokuGameController {
     private void displayTheOptions() {
         System.out.println("Please look at your options: \n " +
                 "- type \"ADD\" to choose a number \n " +
-                "- type \"SUDOKU\" to solve the game \n " +
+                "- type \"SOLVE\" to solve the game \n " +
                 "- type \"NEW\" to start a new game \n " +
                 "- press \"X\" to exit the game.");
     }
